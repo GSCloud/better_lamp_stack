@@ -11,10 +11,11 @@ Run modern LAMP stack applications.
 ## Install
 
 * run "**make install**"
+* run "**make extensions**" to add PHP extensions: **mysqli** and **redis** (via PECL)
 * use the included Apache 2 configuration to run this on a real site through proxying (TLS certificates needed)
 * uncomment TLS verification commands if using Authenticated origin pull [https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull]
 * don't forget to run "**a2enmod proxy**" command on the host
-* use PMA or Adminer to import MySQL data
+* use **PMA** or **Adminer** to import MySQL data
 
 ## Remove
 
