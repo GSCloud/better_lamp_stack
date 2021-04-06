@@ -1,6 +1,6 @@
 == Better LAMP stack
 
-GitHub: [https://github.com/GSCloud/shitty_lamp_stack]
+GitHub: [https://github.com/GSCloud/better_lamp_stack]
 
 Run modern LAMP stack applications.
 
