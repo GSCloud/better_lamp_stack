@@ -30,7 +30,7 @@ Run modern LAMP stack applications.
 ## Configuration
 
 * configuration directives for Docker -> **.env**
-* extra configuration directives for PHP -> **uploads.ini**
+* extra configuration directives for PHP -> **limits.ini**, **uploads.ini**, **timezone.ini**
 
 ## Data storage
 
