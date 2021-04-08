@@ -19,7 +19,7 @@ docs:
 	@bash ./bin/create_pdf.sh
 
 install:
-	@echo "🔨 \e[1;32m Installing\e[0m"
+	@echo "🔨 \e[1;32m Installing containers\e[0m"
 	@echo "Checking ..."
 	@make config >/dev/null
 	@bash ./bin/install.sh
@@ -35,7 +35,7 @@ remove:
 	@bash ./bin/remove.sh
 
 config:
-	@echo "🔨 \e[1;32m Docker config\e[0m"
+	@echo "🔨 \e[1;32m Docker configuration\e[0m"
 	@docker-compose config
 
 check:

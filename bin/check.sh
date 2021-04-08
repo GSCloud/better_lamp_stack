@@ -9,8 +9,10 @@ if [ ! -r ".env" ]; then fail "Missing .env file!"; fi
 source .env
 
 if [ -z ${APP_NAME+x} ]; then fail "Missing APP_NAME definition!"; fi
+if [ -z ${APP_PORT+x} ]; then fail "Missing APP_PORT definition!"; fi
 if [ -z ${DB_NAME+x} ]; then fail "Missing DB_NAME definition!"; fi
 if [ -z ${PMA_NAME+x} ]; then fail "Missing PMA_NAME definition!"; fi
+if [ -z ${PMA_PORT+x} ]; then fail "Missing PMA_PORT definition!"; fi
 
 info "Docker containers"
 docker-compose ps
@@ -19,9 +21,10 @@ echo -en "\n"
 if [ -z "$(docker ps -a | grep ${APP_NAME})" ]; then fail "$APP_NAME is not running!"; fi
 
 info "PHP extensions"
-if [ -n "$(docker exec $APP_NAME php -m | grep mysqli)" ]; then echo "🆗 mysqli"; else echo "❌️ mysqli"; fi
-if [ -n "$(docker exec $APP_NAME php -m | grep mysqlnd)" ]; then echo "🆗 mysqlnd"; else echo "❌️ mysqlnd"; fi
-if [ -n "$(docker exec $APP_NAME php -m | grep redis)" ]; then echo "🆗 redis"; else echo "❌️ redis"; fi
+for i in ${PHP_EXTENSIONS}
+do
+    if [ -n "$(docker exec $APP_NAME php -m | grep $i)" ]; then echo "🆗 $i"; else echo "❌️ $i"; fi
+done
 echo -en "\n"
 
 info "APP limits"
@@ -33,5 +36,11 @@ info "PMA limits"
 docker exec $PMA_NAME php -i | grep 'memory_limit'
 docker exec $PMA_NAME php -i | grep 'upload_max_filesize'
 echo -en "\n"
+
+info "APP"
+echo -en "\nhttp://localhost:${APP_PORT}\n\n"
+
+info "PMA"
+echo -en "\nhttp://localhost:${PMA_PORT}\n\n"
 
 exit 0
