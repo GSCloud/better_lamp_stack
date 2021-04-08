@@ -10,7 +10,8 @@ Run modern LAMP stack applications.
 
 ## Install
 
-* run "**make install**"
+* run "**make install**" to install minimal set
+* run "**make everything**" to install simply everything - for a clean new install incl. extensions
 * run "**make extensions**" to add PHP extensions: **mysqli** and **redis** (via PECL)
 * use the included Apache 2 configuration to run this on a real site through proxying (TLS certificates needed)
 * uncomment TLS verification commands if using Authenticated origin pull [https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull]
