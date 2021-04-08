@@ -10,6 +10,7 @@ source .env
 
 if [ -z ${APP_NAME+x} ]; then fail "Missing APP_NAME definition!"; fi
 if [ -z ${APP_PORT+x} ]; then fail "Missing APP_PORT definition!"; fi
+if [ -z ${CHECK_EXTENSIONS+x} ]; then fail "Missing CHECK_EXTENSIONS definition!"; fi
 if [ -z ${DB_NAME+x} ]; then fail "Missing DB_NAME definition!"; fi
 if [ -z ${PMA_NAME+x} ]; then fail "Missing PMA_NAME definition!"; fi
 if [ -z ${PMA_PORT+x} ]; then fail "Missing PMA_PORT definition!"; fi
@@ -21,7 +22,7 @@ echo -en "\n"
 if [ -z "$(docker ps -a | grep ${APP_NAME})" ]; then fail "$APP_NAME is not running!"; fi
 
 info "PHP extensions"
-for i in ${PHP_EXTENSIONS}
+for i in ${CHECK_EXTENSIONS}
 do
     if [ -n "$(docker exec $APP_NAME php -m | grep $i)" ]; then echo "🆗 $i"; else echo "❌️ $i"; fi
 done
@@ -38,9 +39,9 @@ docker exec $PMA_NAME php -i | grep 'upload_max_filesize'
 echo -en "\n"
 
 info "APP"
-echo -en "\nhttp://localhost:${APP_PORT}\n\n"
+echo -en "http://localhost:${APP_PORT}\n\n"
 
 info "PMA"
-echo -en "\nhttp://localhost:${PMA_PORT}\n\n"
+echo -en "http://localhost:${PMA_PORT}\n\n"
 
 exit 0
