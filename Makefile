@@ -19,7 +19,7 @@ info:
 	@echo "🆘 \e[0;1mmake exec\e[0m \t\t- execute bash in the app container"
 	@echo ""
 	@echo "🆘 \e[0;1mmake remove\e[0m \t\t- remove containers (data will stay)"
-	@echo "🆘 \e[0;1mmake purge\e[0m \t\t- purge current installation (data will vanish!)"
+	@echo "🆘 \e[0;1mmake purge\e[0m \t\t- purge current installation (DATA WILL VANISH!)"
 	@echo ""
 docs:
 	@echo "🔨 \e[1;32m Building documentation\e[0m"
