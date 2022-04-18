@@ -15,12 +15,12 @@ source .env
 ###############################################################################
 
 # MarkDown -> ADOC
-find . -type d \( -path ./node_modules -o -path ./vendor \) -prune -false -o -iname "*.md" \
+find . -maxdepth 1 -type d \( -path ./db -o -path ./www \) -prune -false -o -iname "*.md" \
     -exec echo "Converting {} to ADOC" \; \
     -exec docker run --rm -v "$(pwd)":/data pandoc/core:latest -f markdown -t asciidoc -i {} -o "{}.adoc" \;
 
 # ADOC -> PDF
-find . -type d \( -path ./node_modules -o -path ./vendor \) -prune -false -o -iname "*.adoc" \
+find . -maxdepth 1 -type d \( -path ./db -o -path ./www \) -prune -false -o -iname "*.adoc" \
     -exec echo "Converting {} to PDF" \; \
     -exec docker run --rm -v $(pwd):/documents/ asciidoctor/docker-asciidoctor:latest asciidoctor-pdf "{}" \;
 
