@@ -18,15 +18,10 @@ if [ -z ${APP_NAME+x} ]; then fail "Missing APP_NAME definition!"; fi
 if [ -z ${DB_NAME+x} ]; then fail "Missing DB_NAME definition!"; fi
 if [ -z ${PMA_NAME+x} ]; then fail "Missing PMA_NAME definition!"; fi
 
-info "Killing containers"
-docker kill $APP_NAME 2>/dev/null
-docker kill $PMA_NAME 2>/dev/null
-docker kill $DB_NAME 2>/dev/null
-
-info "Removing containers"
-docker rm $APP_NAME 2>/dev/null
-docker rm $PMA_NAME 2>/dev/null
-docker rm $DB_NAME 2>/dev/null
+info "Resuming containers"
+docker start $APP_NAME 2>/dev/null
+docker start $PMA_NAME 2>/dev/null
+docker start $DB_NAME 2>/dev/null
 
 echo ""
 

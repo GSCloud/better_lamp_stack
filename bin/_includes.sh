@@ -1,17 +1,16 @@
 #!/bin/bash
-#@author Filip Oščádal <git@gscloud.cz>
+#@author Fred Brooker <git@gscloud.cz>
 
 info() {
-    echo -e "\e[1;32m*\e[0;1m ${*}\e[0m" 1>&2
+    echo -e "\n\e[1;32m*\e[0;1m ${*}\e[0m" 1>&2
 }
 
 warn() {
-    echo -e "\n\e[1;33m***\e[0;1m ${*}\e[0m\n\n" 1>&2
-    sleep 1
+    echo -e "\n\n\e[1;33m***\e[0;1m ${*}\e[0m\n\n" 1>&2
 }
 
 fail() {
-    echo -e "\n\e[1;31m***\e[0;1m ${*}\e[0m\n\n" 1>&2
+    echo -e "\n\n\n\e[1;31m***\e[0;1m ${*}\e[0m\n\n" 1>&2
     exit 1
 }
 

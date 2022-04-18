@@ -12,8 +12,8 @@ Run modern LAMP stack applications.
 
 * run "**make install**" to install minimal set
 * run "**make everything**" to install simply everything - for a clean new install incl. extensions
-* run "**make extensions**" to add PHP extensions: **mysqli** and **redis** (via PECL)
-* use the included Apache 2 configuration to run this on a real site through proxying (TLS certificates needed)
+* run "**make extensions**" to add PHP extensions
+* included Apache 2 configuration to run this on as a real public site through proxying (TLS certificates needed)
 * uncomment TLS verification commands if using Authenticated origin pull [https://developers.cloudflare.com/ssl/origin-configuration/authenticated-origin-pull]
 * don't forget to run "**a2enmod proxy**" command on the host
 * use **PMA** or **Adminer** to import MySQL data
@@ -21,21 +21,21 @@ Run modern LAMP stack applications.
 ## Remove
 
 * run "**make remove**"
-* persistent data remains in the data storage (see below)
+* persistent data will remain
 
-## Clean
+## Purge
 
-* run "**make clean**"
-* removes database storage permanently
+* run "**make purge**"
+* removes everything permanently
 
 ## Configuration
 
-* configuration directives for Docker -> **.env**
-* extra configuration directives for PHP -> **limits.ini**, **uploads.ini**, **timezone.ini**
+* configuration -> **.env**
+* extra configuration directives for PHP -> INI/ subfolder
 
-## Data storage
+## Default Storage
 
-* **Application** storage -> **app/**
-* **MySQL** database storage -> **db/**
+* **Application** -> **www/**
+* **MySQL** database -> **db/**
 
-Author: Filip Oščádal aka Fred Brooker 💌 <git@gscloud.cz>
+Author: Fred Brooker 💌 <git@gscloud.cz>

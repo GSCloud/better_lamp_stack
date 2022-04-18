@@ -1,17 +1,27 @@
 #!/bin/bash
-#@author Filip Oščádal <git@gscloud.cz>
+#@author Fred Brooker <git@gscloud.cz>
 
-dir="$(dirname "$0")"
-. "$dir/_includes.sh"
+if [ ! -f "./bin/_includes.sh" ]; then
+    echo -en "\n\n\e[1;31mMissing _includes.sh file!\e[0m\n\n"
+    exit 1
+fi
+. ./bin/_includes.sh
 
 command -v docker >/dev/null 2>&1 || fail "Docker is NOT installed!"
 
+if [ ! -r ".env" ]; then fail "Missing .env file!"; fi
+source .env
+
+###############################################################################
+
 # MarkDown -> ADOC
-find . -type d \( -path ./node_modules -o -path ./vendor \) -prune -false -o -iname "*.md" -exec echo "Converting {} to ADOC" \; \
-    -exec docker run --rm -u $(id -u ${USER}):$(id -g ${USER}) -v "$(pwd)":/data pandoc/core -f markdown -t asciidoc -i {} -o "{}.adoc" \;
+find . -type d \( -path ./node_modules -o -path ./vendor \) -prune -false -o -iname "*.md" \
+    -exec echo "Converting {} to ADOC" \; \
+    -exec docker run --rm -v "$(pwd)":/data pandoc/core:latest -f markdown -t asciidoc -i {} -o "{}.adoc" \;
 
 # ADOC -> PDF
-find . -type d \( -path ./node_modules -o -path ./vendor \) -prune -false -o -iname "*.adoc" -exec echo "Converting {} to PDF" \; \
-    -exec docker run --rm -u $(id -u ${USER}):$(id -g ${USER}) -v $(pwd):/documents/ asciidoctor/docker-asciidoctor:1.9.0 asciidoctor-pdf "{}" \;
+find . -type d \( -path ./node_modules -o -path ./vendor \) -prune -false -o -iname "*.adoc" \
+    -exec echo "Converting {} to PDF" \; \
+    -exec docker run --rm -v $(pwd):/documents/ asciidoctor/docker-asciidoctor:latest asciidoctor-pdf "{}" \;
 
 exit 0
