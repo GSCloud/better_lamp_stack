@@ -1,0 +1,37 @@
+#@author Fred Brooker <git@gscloud.cz>
+PROJECT_NAME="Better LAMP stack"
+
+# DOCKER: application
+APP_NAME="blamps_app_001"
+APP_IMAGE="php:7.4-apache" # Apache + PHP docker image
+APP_VOLUME="./www" # path to www folder
+APP_PORT=9001 # exposed port
+
+# DOCKER: database
+DB_NAME="blamps_db_001"
+DB_IMAGE="mariadb:latest" # database docker image
+DB_VOLUME="./db" # path to database folder
+DB_PORT=9002 # exposed port
+DB_INTERNAL_PORT=3306  # internal port
+
+# DOCKER: administration
+PMA_NAME="blamps_pma_001"
+PMA_IMAGE="phpmyadmin/phpmyadmin:latest" # administration docker image
+PMA_PORT=9003 # exposed port
+
+###############################################################################
+
+# PHP extensions
+CMD_EXTRAS1="" # command to execute before APT
+APT_EXTRAS="" # extra packages to install
+CMD_EXTRAS2="" # command to execute after APT
+
+# PHP settings
+PHP_EXTENSIONS="mysqli" # extensions to install via docker-php-ext-install
+PHP_CHECK_EXTENSIONS="mysqli" # extensions to test for presence
+
+# MySQL settings
+MYSQL_DATABASE_NAME=my_database # MySQL database
+MYSQL_ROOT_PASSWORD="SecretPassword123" # MySQL database root password
+MYSQL_USER=mxdpeep # MySQL user
+MYSQL_PASSWORD="AnotherSecret42" # MySQL user password
