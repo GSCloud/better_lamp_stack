@@ -10,7 +10,7 @@ warn() {
 }
 
 fail() {
-    echo -e "\n\n\n\e[1;31m***\e[0;1m ${*}\e[0m\n\n" 1>&2
+    echo -e "\n\n\e[1;31m***\e[0;1m ${*}\e[0m\n\n" 1>&2
     exit 1
 }
 

@@ -20,13 +20,13 @@ if [ -z ${PMA_NAME+x} ]; then fail "Missing PMA_NAME definition!"; fi
 
 info "Killing containers"
 docker kill $APP_NAME 2>/dev/null
-docker kill $PMA_NAME 2>/dev/null
 docker kill $DB_NAME 2>/dev/null
+docker kill $PMA_NAME 2>/dev/null
 
 info "Removing containers"
-docker rm $APP_NAME 2>/dev/null
-docker rm $PMA_NAME 2>/dev/null
-docker rm $DB_NAME 2>/dev/null
+docker rm $APP_NAME -f 2>/dev/null
+docker rm $DB_NAME -f 2>/dev/null
+docker rm $PMA_NAME -f 2>/dev/null
 
 echo ""
 
