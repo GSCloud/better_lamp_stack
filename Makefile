@@ -40,7 +40,6 @@ stop:
 start:
 	@echo "🔨 \e[1;32m Resuming containers\e[0m"
 	@bash ./bin/start.sh
-	@make check
 config:
 	@echo "🔨 \e[1;32m Configuration\e[0m"
 	@docker-compose config

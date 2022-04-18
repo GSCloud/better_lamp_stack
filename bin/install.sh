@@ -16,9 +16,11 @@ source .env
 
 if [ -z ${APP_NAME+x} ]; then fail "Missing APP_NAME definition!"; fi
 if [ -z ${DB_NAME+x} ]; then fail "Missing DB_NAME definition!"; fi
+if [ -z ${DB_VOLUME+x} ]; then fail "Missing DB_VOLUME definition!"; fi
 if [ -z ${PMA_NAME+x} ]; then fail "Missing PMA_NAME definition!"; fi
 
-mkdir -p db
+# make DB volume
+mkdir -p "${DB_VOLUME}"
 
 info "Stopping containers"
 docker stop $APP_NAME 2>/dev/null
