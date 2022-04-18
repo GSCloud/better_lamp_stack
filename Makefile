@@ -5,7 +5,8 @@ all: info
 info:
 	@echo "\e[1;32m👾 Welcome to ${PROJECT_NAME}"
 	@echo ""
-	@echo "\e[0mEnvironment:\n\t\e[0;1mPHP\e[0m ${PHP_VERSION} (${PHP_CHECK_EXTENSIONS}) \e[0;1mMySQL\e[0m ${MYSQL_VERSION}"
+	@echo "\e[0mApp environment: \t\e[0;1mPHP\e[0m ${APP_IMAGE} \e[0;1mMySQL\e[0m ${DB_IMAGE}"
+	@echo "\e[0mPHP extensions: \t${PHP_CHECK_EXTENSIONS}"
 	@echo ""
 	@echo "🆘 \e[0;1mmake docs\e[0m \t\t- build documentation"
 	@echo "🆘 \e[0;1mmake showconfig\e[0m \t- show Docker configuration"
