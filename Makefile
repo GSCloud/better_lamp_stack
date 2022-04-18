@@ -50,4 +50,5 @@ purge:
 	@echo "🔨 \e[1;32m Purging installation\e[0m"
 	@bash ./bin/purge.sh
 
-everything: remove install check
+# classic installation of everything
+everything: remove install extensions check
