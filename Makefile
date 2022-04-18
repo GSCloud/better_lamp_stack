@@ -25,12 +25,11 @@ docs:
 	@bash ./bin/create_pdf.sh
 install:
 	@echo "🔨 \e[1;32m Installing containers\e[0m"
-	@echo "Checking ..."
-	@make showconfig >/dev/null
 	@bash ./bin/install.sh
 extensions:
 	@echo "🔨 \e[1;32m Installing PHP extensions\e[0m"
 	@bash ./bin/extensions.sh
+	@make check
 remove:
 	@echo "🔨 \e[1;32m Removing containers\e[0m"
 	@bash ./bin/remove.sh
@@ -40,8 +39,12 @@ stop:
 start:
 	@echo "🔨 \e[1;32m Resuming containers\e[0m"
 	@bash ./bin/start.sh
+	@make check
 showconfig:
-	@echo "🔨 \e[1;32m Docker-compose configuration\e[0m"
+	@echo "🔨 \e[1;32m Configuration\e[0m"
+	@docker-compose config
+config:
+	@echo "🔨 \e[1;32m Configuration\e[0m"
 	@docker-compose config
 check:
 	@echo "🔨 \e[1;32m Checking configuration\e[0m"
@@ -51,4 +54,4 @@ purge:
 	@bash ./bin/purge.sh
 
 # classic installation of everything
-everything: remove install extensions check
+everything: remove install extensions
