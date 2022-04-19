@@ -24,7 +24,7 @@ PMA_PORT=9003 # exposed port
 # PHP extensions
 CMD_EXTRAS1="" # command to execute before APT
 APT_EXTRAS="" # extra packages to install
-CMD_EXTRAS2="" # command to execute after APT
+CMD_EXTRAS2="a2enmod rewrite expires headers" # command to execute after APT
 
 # PHP settings
 PHP_EXTENSIONS="mysqli" # extensions to install via docker-php-ext-install

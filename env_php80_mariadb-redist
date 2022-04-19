@@ -22,7 +22,7 @@ PMA_PORT=9003 # exposed port
 ###############################################################################
 
 # PHP extensions
-CMD_EXTRAS1="" # command to execute before APT
+CMD_EXTRAS1="a2enmod rewrite expires headers" # command to execute before APT
 APT_EXTRAS="" # extra packages to install
 CMD_EXTRAS2="pecl install redis && docker-php-ext-enable redis" # command to execute after APT
 
