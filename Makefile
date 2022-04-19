@@ -10,6 +10,7 @@ info:
 	@echo ""
 	@echo "🆘 \e[0;1mmake docs\e[0m \t\t- build documentation"
 	@echo "🆘 \e[0;1mmake config\e[0m \t\t- show Docker configuration"
+	@echo "🆘 \e[0;1mmake configjson\e[0m \t\t- show Docker configuration in JSON format"
 	@echo ""
 	@echo "🆘 \e[0;1mmake install\e[0m \t- install and start containers"
 	@echo "🆘 \e[0;1mmake extensions\e[0m \t- install PHP extensions"
@@ -43,6 +44,8 @@ start:
 config:
 	@echo "🔨 \e[1;32m Configuration\e[0m"
 	@docker-compose config
+configjson:
+	@bash ./bin/configjson.sh
 check:
 	@echo "🔨 \e[1;32m Checking configuration\e[0m"
 	@bash ./bin/check.sh
