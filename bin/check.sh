@@ -35,9 +35,9 @@ if [ ! -z "$(docker ps | grep ${APP_NAME})" ]; then
     for i in ${PHP_CHECK_EXTENSIONS}
     do
         if [ -n "$(docker exec $APP_NAME php -m | grep $i)" ]; then
-            echo -en "$c. 🆗 $i "
+            echo -en "$c. 🆗 OK $i "
         else
-            echo -en "$c. ❌️ $i "
+            echo -en "$c. ❌️ FAIL $i "
         fi
         ((c++))
     done
