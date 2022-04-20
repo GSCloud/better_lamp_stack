@@ -9,8 +9,9 @@ info:
 	@echo "\e[0mPHP extensions: \t${PHP_CHECK_EXTENSIONS}"
 	@echo ""
 	@echo "🆘 \e[0;1mmake docs\e[0m \t\t- build documentation"
-	@echo "🆘 \e[0;1mmake config\e[0m \t\t- show Docker configuration"
-	@echo "🆘 \e[0;1mmake configjson\e[0m \t- show Docker configuration in JSON format"
+	@echo "🆘 \e[0;1mmake config\e[0m \t\t- show Docker config"
+	@echo "🆘 \e[0;1mmake dockerjson\e[0m \t- show Docker config as JSON"
+	@echo "🆘 \e[0;1mmake appjson\e[0m \t- show app config as JSON"
 	@echo ""
 	@echo "🆘 \e[0;1mmake install\e[0m \t- install and start containers"
 	@echo "🆘 \e[0;1mmake extensions\e[0m \t- install PHP extensions"
@@ -44,8 +45,10 @@ start:
 config:
 	@echo "🔨 \e[1;32m Configuration\e[0m"
 	@docker-compose config
-configjson:
+dockerjson:
 	@bash ./bin/configjson.sh
+appjson:
+	@bash ./bin/exportconfig.sh
 check:
 	@echo "🔨 \e[1;32m Checking configuration\e[0m"
 	@bash ./bin/check.sh
